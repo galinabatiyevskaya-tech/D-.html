@@ -1,1 +1,540 @@
-# D-.html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Галина Батиевская | Старший графический дизайнер</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #2d2d2d;
+      background: linear-gradient(135deg, #f9f7fd 0%, #ede7f6 100%);
+      background-image:
+        linear-gradient(45deg, rgba(106, 27, 154, 0.01) 25%, transparent 25%,
+                         transparent 75%, rgba(106, 27, 154, 0.01) 75%),
+        linear-gradient(45deg, rgba(106, 27, 154, 0.01) 25%, transparent 25%,
+                         transparent 75%, rgba(106, 27, 154, 0.01) 75%);
+      background-size: 40px 40px;
+      background-position: 0 0, 20px 20px;
+      min-height: 100vh;
+    }
+
+    /* === Левая полоса с тегами === */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 70px;
+      height: 100vh;
+      background: #f3e5f5;
+      border-right: 1px solid #e0d6eb;
+      padding: 30px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 10;
+    }
+
+    .tag {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 1.2px;
+      color: #6a1b9a;
+      text-transform: uppercase;
+      transform: rotate(180deg);
+      text-align: center;
+      padding: 4px 0;
+      width: 100%;
+    }
+
+    .tag::before {
+      content: "#";
+      color: #9c27b0;
+      opacity: 0.8;
+      margin-right: 2px;
+    }
+
+    /* === Основной контент === */
+    .main {
+      margin-left: 70px;
+      padding: 50px 60px 60px;
+      min-height: 100vh;
+    }
+
+    /* === Фото + подпись справа === */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .photo-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .photo-container {
+      width: 160px;
+      height: 160px;
+      overflow: hidden;
+      border: 2px solid white;
+    }
+
+    .photo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* Подпись справа от фото */
+    .arrow-label {
+      position: relative;
+      background: #6a1b9a;
+      color: white;
+      padding: 10px 18px;
+      font-weight: 600;
+      font-size: 15px;
+      white-space: nowrap;
+      border-radius: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .arrow-label::before {
+      content: '';
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+      border-right: 8px solid #6a1b9a;
+      margin-left: -14px;
+    }
+
+    .header-text {
+      flex: 1;
+    }
+
+    h1 {
+      font-weight: 800;
+      font-size: 40px;
+      margin-bottom: 12px;
+      color: #1a1a1a;
+    }
+
+    .subtitle {
+      font-size: 19px;
+      color: #555;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .highlight {
+      background: linear-gradient(110deg, #6a1b9a, #9c27b0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 23px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2 i {
+      color: #6a1b9a;
+      font-size: 20px;
+    }
+
+    ul {
+      padding-left: 26px;
+    }
+
+    li {
+      margin-bottom: 9px;
+      line-height: 1.55;
+    }
+
+    li::marker {
+      color: #6a1b9a;
+      font-weight: 600;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .skill-tag {
+      background: #f3e5f5;
+      color: #6a1b9a;
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .job-card {
+      background: #faf5ff;
+      padding: 22px;
+      margin-bottom: 24px;
+      border-left: 4px solid #6a1b9a;
+      border-radius: 0;
+    }
+
+    .job-title {
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .job-company {
+      font-weight: 600;
+      color: #6a1b9a;
+      margin-bottom: 6px;
+    }
+
+    .job-period {
+      font-size: 14px;
+      color: #666;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .swot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+      margin-top: 18px;
+    }
+
+    .swot-box {
+      padding: 20px;
+      background: #f9f5fd;
+      border: 1px solid #eae5f2;
+      border-radius: 0;
+    }
+
+    .swot-box h3 {
+      font-size: 17px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .swot-s h3 { color: #6a1b9a; }
+    .swot-w h3 { color: #d35400; }
+    .swot-o h3 { color: #2e7d32; }
+    .swot-t h3 { color: #c62828; }
+
+    .contact {
+      text-align: center;
+      padding: 32px;
+      background: linear-gradient(135deg, #6a1b9a 0%, #9c27b0 100%);
+      color: white;
+      border-radius: 0;
+      margin-top: 30px;
+    }
+
+    .contact h2 {
+      color: white;
+      margin-top: 0;
+    }
+
+    .contact p {
+      max-width: 700px;
+      margin: 0 auto 24px;
+      font-size: 16px;
+      opacity: 0.95;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: white;
+      color: #6a1b9a;
+      text-decoration: none;
+      border-radius: 0;
+      font-weight: 700;
+      font-size: 15px;
+      transition: all 0.25s ease;
+    }
+
+    .btn:hover {
+      background: #f3e5f5;
+      transform: translateY(-2px);
+    }
+
+    .telegram-block {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .telegram-block a {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 240px;
+      padding: 18px;
+      background: white;
+      color: #6a1b9a;
+      text-decoration: none;
+      border: 2px solid #e0d6eb;
+      border-radius: 0;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.25s ease;
+    }
+
+    .telegram-block a:hover {
+      background: #f3e5f5;
+      border-color: #6a1b9a;
+    }
+
+    .telegram-block i {
+      font-size: 28px;
+      color: #6a1b9a;
+    }
+
+    .telegram-block small {
+      font-size: 13px;
+      opacity: 0.7;
+    }
+
+    /* === Плавающая кнопка Behance === */
+    .floating-portfolio {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+    }
+
+    .floating-portfolio a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      background: #6a1b9a;
+      color: white;
+      text-decoration: none;
+      border-radius: 0;
+      font-size: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .floating-portfolio a:hover {
+      transform: scale(1.1) rotate(2deg);
+      background: #9c27b0;
+    }
+
+    .floating-portfolio i {
+      font-size: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; padding: 30px 20px; }
+      .header { flex-direction: column; text-align: center; }
+      .photo-wrap {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .arrow-label::before {
+        display: none;
+      }
+      .arrow-label {
+        padding: 8px 16px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Левая полоса с тегами -->
+  <div class="sidebar">
+    <div class="tag">Старший дизайнер</div>
+    <div class="tag">Маркетплейсы</div>
+    <div class="tag">Wildberries</div>
+    <div class="tag">Ozon</div>
+    <div class="tag">Яндекс.Маркет</div>
+    <div class="tag">CTR/CR</div>
+    <div class="tag">Инфографика</div>
+    <div class="tag">Rich-контент</div>
+    <div class="tag">А/В-тесты</div>
+    <div class="tag">Аналитика ЦА</div>
+    <div class="tag">Фотосъёмка</div>
+    <div class="tag">UGC</div>
+    <div class="tag">Психология</div>
+    <div class="tag">ТЗ для дизайнеров</div>
+    <div class="tag">Adobe</div>
+    <div class="tag">Figma</div>
+    <div class="tag">Behance</div>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <div class="photo-wrap">
+        <div class="photo-container">
+          <img src="file:///D:/Mask%20group.png" alt="Галина Батиевская">
+        </div>
+        <div class="arrow-label">
+          <i class="fas fa-arrow-left"></i>
+          Я Галина, привет!
+        </div>
+      </div>
+      <div class="header-text">
+        <h1>Галина Батиевская</h1>
+        <div class="subtitle">
+          Старший графический дизайнер<br>
+          <span class="highlight">маркетплейсы • косметика • аналитика • CTR/CR</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><i class="fas fa-briefcase"></i> Чем занимаюсь</h2>
+      <ul>
+        <li>Полный цикл контента для <strong>Wildberries, Ozon, Яндекс.Маркет</strong>: карточки, rich-контент, инфографика, баннеры</li>
+        <li>Анализ ЦА через отзывы и поведение — чтобы понимать, <em>что мешает купить</em></li>
+        <li>A/B-тестирование визуала и текста → рост <strong>CTR, CR</strong>, снижение <strong>CO</strong></li>
+        <li>Написание ТЗ для дизайнеров на основе гипотез, а не интуиции</li>
+        <li>Организация фотосъёмок в формате UGC и lifestyle</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2><i class="fas fa-toolbox"></i> Инструменты</h2>
+      <div class="skills">
+        <span class="skill-tag"><i class="fab fa-photoshop"></i> Photoshop</span>
+        <span class="skill-tag"><i class="fab fa-figma"></i> Figma</span>
+        <span class="skill-tag"><i class="fab fa-adobe"></i> Illustrator</span>
+        <span class="skill-tag"><i class="fab fa-canva"></i> Canva</span>
+        <span class="skill-tag"><i class="fas fa-video"></i> CapCut</span>
+        <span class="skill-tag"><i class="fas fa-chart-bar"></i> MPStats</span>
+        <span class="skill-tag"><i class="fas fa-table"></i> Excel</span>
+        <span class="skill-tag"><i class="fas fa-robot"></i> GPT</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><i class="fas fa-user-tie"></i> Опыт</h2>
+      <div class="job-card">
+        <div class="job-title">Старший графический дизайнер</div>
+        <div class="job-company">АО «ЭЛС»</div>
+        <div class="job-period">Май 2025 — настоящее время</div>
+        <p>Разработка инфографики и rich-контента для маркетплейсов и корпоративных сайтов. Создание шаблонов, адаптация под требования платформ. Результат: −30–40% времени на согласование, +вовлечённость.</p>
+      </div>
+      <div class="job-card">
+        <div class="job-title">Графический дизайнер</div>
+        <div class="job-company">Рекламное агентство «Майский день»</div>
+        <div class="job-period">Ранее</div>
+        <p>Работа с брендами: ресторан Шаляпин, пекарня Слой, пекарня Коржов, ресторан Лингвини, доставка Впрок, фитнес клуб Fresh Fitness, Альянс ЛАТ и др.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><i class="fas fa-chart-pie"></i> SWOT-анализ</h2>
+      <div class="swot-grid">
+        <div class="swot-box swot-s">
+          <h3><i class="fas fa-check-circle"></i> Сильные стороны</h3>
+          <ul>
+            <li>Дизайн + контент + аналитика</li>
+            <li>Опыт с WB/Ozon/Я.М — 1.5+ года</li>
+            <li>Системный подход к ЦА</li>
+            <li>Структурность, ответственность</li>
+          </ul>
+        </div>
+        <div class="swot-box swot-w">
+          <h3><i class="fas fa-exclamation-triangle"></i> Слабые стороны</h3>
+          <ul>
+            <li>Ограниченный B2B-опыт</li>
+            <li>Нет технического SEO</li>
+          </ul>
+        </div>
+        <div class="swot-box swot-o">
+          <h3><i class="fas fa-star"></i> Возможности</h3>
+          <ul>
+            <li>Развитие в SaaS / B2B</li>
+            <li>Роль стратега контента</li>
+            <li>Эмпатия → сильные коммуникации</li>
+          </ul>
+        </div>
+        <div class="swot-box swot-t">
+          <h3><i class="fas fa-bolt"></i> Угрозы</h3>
+          <ul>
+            <li>Изменение алгоритмов</li>
+            <li>Конкуренция в нише</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact">
+      <h2><i class="fas fa-handshake"></i> Давайте работать вместе</h2>
+      <p>Готова к полной или частичной занятости — офис, удалённо, гибрид.</p>
+      <div class="contact-links">
+        <a href="mailto:galina.batiyevskaya@gmail.com" class="btn">
+          <i class="fas fa-envelope"></i> Почта
+        </a>
+        <a href="tel:+79199802118" class="btn">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="telegram-block">
+      <a href="https://t.me/galinabbs" target="_blank">
+        <i class="fab fa-telegram-plane"></i>
+        <span>Написать в Telegram</span>
+        <small>@galinabbs</small>
+      </a>
+    </div>
+  </div>
+
+  <!-- Плавающая кнопка Behance -->
+  <div class="floating-portfolio">
+    <a href="https://www.behance.net/3e1770c0" target="_blank" title="Портфолио на Behance">
+      <i class="fab fa-behance"></i>
+    </a>
+  </div>
+</body>
+</html>
